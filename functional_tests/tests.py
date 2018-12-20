@@ -92,7 +92,8 @@ class NewVisitorTest(LiveServerTestCase):
         ## of Edith's is coming through from cookies etc
 
         self.browser.quit()
-        self.browser = webdriver.Firefox()
+        #self.browser = webdriver.Firefox()
+        self.browser = webdriver.Firefox(executable_path=r'/Users/Pawel/.local/bin/geckodriver')
 
         # Francis visits the home page. There is no sign of Edith's # list
         self.browser.get(self.live_server_url)
