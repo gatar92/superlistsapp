@@ -1,3 +1,4 @@
+import os
 #from django.test import LiveServerTestCase
 from django.contrib.staticfiles.testing import StaticLiveServerTestCase
 from selenium import webdriver
@@ -13,6 +14,9 @@ class NewVisitorTest(StaticLiveServerTestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox(executable_path=r'/Users/Pawel/.local/bin/geckodriver')
+        staging_server = os.environ.get('STAGING_SERVER')
+        if staging_server:
+            self.live_server_url = 'http://' + staging_server
         #self.browser.implicity_wait(3)
 
     def tearDown(self):
